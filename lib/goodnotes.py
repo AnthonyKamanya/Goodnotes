@@ -8,7 +8,7 @@ class Goodnotes():
         
         self.title = title
         self.content = content
-        self.read_so_far = 0
+        self.num_of_words_read_so_far = 0
         
 
     def format(self):
@@ -28,12 +28,12 @@ class Goodnotes():
     def reading_chunk(self,wpm,minutes):
         number_of_words_to_read = wpm * minutes
         words = self.content.split(" ")
-        if self.read_so_far >= len(words):
-            self.read_so_far = 0
-        chunk_start = self.read_so_far
-        chunk_end =self.read_so_far + number_of_words_to_read
-        chunk_words = words[chunk_start : chunk_end]
-        self.read_so_far = chunk_end
+        if self.num_of_words_read_so_far >= len(words):
+            self.num_of_words_read_so_far = 0
+        chunk_start_num = self.num_of_words_read_so_far
+        chunk_end_num =self.num_of_words_read_so_far + number_of_words_to_read
+        chunk_words = words[chunk_start_num : chunk_end_num]
+        self.num_of_words_read_so_far = chunk_end_num
         return " ".join(chunk_words)
         
 
