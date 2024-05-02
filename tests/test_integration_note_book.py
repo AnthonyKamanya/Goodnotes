@@ -41,3 +41,19 @@ def test_estimated_time_to_read_notes():
     note_book.add(note_book_entry_second)
     result = note_book.reading_time(2)
     assert result == 1
+
+"""
+Given 5 words with 2wpm
+#reading_time will return 1
+"""
+
+def test_estimated_time_to_read_notes_with_5_words():
+    note_book = Diary()
+    note_book_entry_first = DiaryEntry("first_business","Airbnb Property")
+    note_book_entry_second = DiaryEntry("Second_business","Youtube rental")
+    note_book_entry_third = DiaryEntry("third_business","AmazonFBA")
+    note_book.add(note_book_entry_first)
+    note_book.add(note_book_entry_second)
+    note_book.add(note_book_entry_third)
+    result = note_book.reading_time(2)
+    assert result == 3

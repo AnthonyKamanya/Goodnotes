@@ -18,6 +18,8 @@ class Diary:
         
 
     def reading_time(self, wpm):
+        if self._notes == [] or wpm ==0 :
+            raise Exception("Cannot Estimate reading time for no entry or 0 wpm")
         return math.ceil(self.count_words()/wpm)
 
     def find_best_entry_for_reading_time(self, wpm, minutes):
