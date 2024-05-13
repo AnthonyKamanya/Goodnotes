@@ -23,14 +23,16 @@ class Diary:
         return math.ceil(self.count_words()/wpm)
 
     def find_best_entry_for_reading_time(self, wpm, minutes):
-        # Parameters:
-        #   wpm:     an integer representing the number of words the user can
-        #            read per minute
-        #   minutes: an integer representing the number of minutes the user has
-        #            to read
-        # Returns:
-        #   An instance of DiaryEntry representing the entry that is closest to,
-        #   but not over, the length that the user could read in the minutes
-        #   they have available given their reading speed.
-        pass
+        if self._notes == [] or wpm ==0 :
+            raise Exception("Cannot Estimate reading time for no entry or 0 wpm")
+        words_the_user_can_read = wpm * minutes
+        most_readable = None
+        longest_found_so_far = 0
+        for each_readable_entry in self._notes:
+            if each_readable_entry.count_words() <= words_the_user_can_read:
+                if each_readable_entry.count_words() > longest_found_so_far:
+                    most_readable = each_readable_entry
+                    longest_found_so_far = each_readable_entry.count_words()
+        return most_readable
+                
 

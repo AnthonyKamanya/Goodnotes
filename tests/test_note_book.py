@@ -32,3 +32,15 @@ def test_wpm_is_0():
         note_book.reading_time(0)
     error_message = str(err.value)
     assert error_message == "Cannot Estimate reading time for no entry or 0 wpm"
+
+
+"""
+Initially #find_best_entry_for_reading_time should raise an error
+"""
+
+def test_wpm_is_0_and_minutes_is_0():
+    note_book = Diary()
+    with pytest.raises(Exception) as err:
+        note_book.find_best_entry_for_reading_time(0,0)
+    error_message = str(err.value)
+    assert error_message == "Cannot Estimate reading time for no entry or 0 wpm"
